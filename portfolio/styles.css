@@ -131,7 +131,7 @@ h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 15px 2%;
     border-bottom: var(--border);
     background-color: var(--white);
     position: sticky;
@@ -146,11 +146,11 @@ h6 {
 }
 
 .nav-links a {
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
     color: var(--black);
-    font-weight: 700;
-    border-bottom: 2px solid transparent;
+    font-weight: 100px;
+    border-bottom: 2px solid var(--transparent);
     transition: border-color 0.2s;
 }
 
@@ -160,13 +160,17 @@ h6 {
 
 /* Hero Section */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 85vh;
+    display: flex;
+    flex-direction: row;
+    min-height: 80vh;
     border-bottom: var(--border);
+    position: relative;
+    overflow: visible;
+    /* let the image break out of the grid line */
 }
 
 .hero-content {
+    flex: 1;
     padding: 5%;
     display: flex;
     flex-direction: column;
@@ -176,6 +180,7 @@ h6 {
     background-color: transparent;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 /* Floating Vector Shapes */
@@ -268,15 +273,32 @@ h6 {
 }
 
 .hero-image-container {
+    flex: 1;
     position: relative;
-
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
 }
 
 .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 120%;
+    max-width: 650px;
+    height: auto;
+    object-fit: contain;
+    /* Shift left so the image overlaps and bursts through the grid border */
+    margin-left: -20%;
+    transform: rotate(2deg);
+    filter: drop-shadow(12px 12px 0px var(--black));
+    transition: transform 0.3s ease, filter 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-img:hover {
+    transform: rotate(0deg) scale(1.03);
+    filter: drop-shadow(18px 18px 0px var(--black));
 }
 
 .sticker {
@@ -307,19 +329,21 @@ h6 {
 }
 
 .sticker-1 {
-    top: 20%;
+    top: 15%;
     left: 10%;
     opacity: 0;
     animation: stickerPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.6s forwards;
+    z-index: 20;
 }
 
 .sticker-2 {
-    bottom: 20%;
-    right: 10%;
+    bottom: 15%;
+    right: 12%;
     background-color: var(--cyan);
     transform: rotate(15deg);
     opacity: 0;
     animation: stickerPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
+    z-index: 20;
 }
 
 /* Marquee */
@@ -924,7 +948,7 @@ h6 {
 }
 
 .logo-img {
-    height: 45px;
+    height: 100px;
     object-fit: contain;
     display: block;
 }
@@ -1052,17 +1076,133 @@ h6 {
 
 /* Responsive */
 @media (max-width: 768px) {
+
+    /* Keep hero side-by-side on mobile, image on right */
     .hero {
-        grid-template-columns: 1fr;
+        flex-direction: row;
+        min-height: 38vh;
+        align-items: center;
+    }
+
+    .hero-image-container {
+        flex: 1.5;
+        padding: 0;
+        min-height: auto;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        z-index: 10;
+    }
+
+    .hero-img {
+        max-width: none;
+        width: 160%;
+        /* scale up so it bursts */
+        transform: rotate(2deg);
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: -30%;
+        /* pull left to overlap vertical line */
+        margin-right: 10%;
+        filter: drop-shadow(6px 6px 0px var(--black));
+        position: relative;
+        z-index: 10;
+    }
+
+    .hero-img:hover {
+        transform: scale(1.02) rotate(0deg);
+        filter: drop-shadow(8px 8px 0px var(--black));
+    }
+
+    .sticker {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+        border: 2px solid var(--black);
+        box-shadow: 2px 2px 0px var(--black);
+    }
+
+    .sticker-1 {
+        left: -15%;
+        top: 10%;
+    }
+
+    .sticker-2 {
+        right: 20%;
+        bottom: 10%;
     }
 
     .hero-content {
+        flex: 1.2;
+        /* text gets slightly more space */
         border-right: none;
-        border-bottom: var(--border);
+        border-bottom: none;
+        padding: 20px 5%;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-content .btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .shape-star {
+        width: 60px;
+        height: 60px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .shape-circle {
+        width: 40px;
+        height: 40px;
+        bottom: 10%;
+        left: 20%;
+    }
+
+    .shape-zigzag {
+        width: 70px;
+        height: 35px;
+        top: 5%;
+        left: 0%;
+    }
+
+    .navbar {
+        flex-wrap: nowrap;
+        padding: 10px 5%;
+        gap: 5px;
+    }
+
+    .logo-img {
+        height: 35px !important;
+        width: auto !important;
     }
 
     .nav-links {
-        display: none;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .nav-links a {
+        margin: 0;
+        font-size: 0.7rem;
+        font-weight: 400;
+    }
+
+    .navbar .btn-primary {
+        padding: 8px 12px;
+        font-size: 0.75rem;
     }
 
     .template-card {
