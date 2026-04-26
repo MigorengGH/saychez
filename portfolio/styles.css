@@ -1061,8 +1061,22 @@ h6 {
         border-bottom: var(--border);
     }
 
+    .navbar {
+        flex-wrap: wrap;
+    }
+
     .nav-links {
-        display: none;
+        display: flex;
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        margin: 0;
+        font-size: 0.9rem;
     }
 
     .template-card {
