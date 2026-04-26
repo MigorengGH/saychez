@@ -116,8 +116,13 @@ h6 {
     color: var(--black);
 }
 
-.hover-white:hover {
-    background-color: var(--white) !important;
+.hover-cyan:hover {
+    background-color: var(--cyan) !important;
+    color: var(--black) !important;
+}
+
+.hover-pink:hover {
+    background-color: var(--pink) !important;
     color: var(--black) !important;
 }
 
@@ -925,8 +930,13 @@ h6 {
     flex-wrap: wrap;
 }
 
-.hover-white:hover {
-    background-color: var(--white);
+.hover-cyan:hover {
+    background-color: var(--cyan);
+    color: var(--black);
+}
+
+.hover-pink:hover {
+    background-color: var(--pink);
     color: var(--black);
 }
 
