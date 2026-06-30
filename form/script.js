@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = document.getElementById('name').value;
     const datetime = document.getElementById('datetime').value;
     const venue = document.getElementById('venue').value;
-    const pax = document.getElementById('pax').value;
     const eventLocation = document.querySelector('input[name="event_location"]:checked')?.value || 'Not specified';
 
     // Get selected hours
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 *Package:* ${hours}
 *Event Type:* ${eventType}
 *Indoor/Outdoor:* ${eventLocation}
-*No. of Pax:* ${pax}
 *Venue:* ${venue}`;
 
     // Encode message for URL
