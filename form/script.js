@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 *Name:* ${name}
 *Date & Time:* ${formattedDate}
-*Duration:* ${hours}
+*Package:* ${hours}
 *Event Type:* ${eventType}
 *Indoor/Outdoor:* ${eventLocation}
 *No. of Pax:* ${pax}
